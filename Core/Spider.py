@@ -28,6 +28,7 @@ class Spider(object):
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('window-size=1920x1080')
         chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument('blink-settings=imagesEnabled=false')
         chrome_options.add_experimental_option('detach', True)
         prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': self.Download_directory}
@@ -151,13 +152,16 @@ class Spider(object):
                 time.sleep(30)
                 os.rename(self.Download_directory + '\\Folkhalsomyndigheten_Covid19.xlsx',
                           self.Download_directory + '\\Folkhalsomyndigheten_Covid19' + '_' + target_date + '.xlsx')
-                print('Finished downloading of the file in {}'.format(target_date))
+                print('{}, Finished downloading of the file in {}'.format(datetime.now().strftime('%b %d %Y - %H:%M:%S')
+                                                                          , target_date))
                 pass
             except:
-                print('failed to download the file in {}'.format(target_date))
+                print('{}, failed to download the file in {}'.format(datetime.now().strftime('%b %d %Y - %H:%M:%S'),
+                                                                     target_date))
             pass
         else:
-            print('No file could be download in {}'.format(target_date))
+            print('{}, No file could be download in {}'.format(datetime.now().strftime('%b %d %Y - %H:%M:%S'),
+                                                               target_date))
             pass
         self.driver.quit()
 
