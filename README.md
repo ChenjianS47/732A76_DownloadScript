@@ -7,6 +7,7 @@ pip install selenium
 Then you need to download the chromedriver from https://chromedriver.chromium.org/
 Remember that you need to download the version that suitable for your chrome browser
 Afther down loading the suitable chromedriver, add the Chrome directory to the system PATH, usually C:\Program Files (x86)\Google\Chrome\Application(For Windows user)
+
 As for linux user, I am not sure where it is, maybe you could search this in the Internet
 
 ## About Config
