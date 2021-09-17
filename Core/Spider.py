@@ -29,7 +29,7 @@ class Spider(object):
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument('window-size=1920x1080')
         chrome_options.add_argument("--no-sandbox")
-        # chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument('blink-settings=imagesEnabled=false')
         chrome_options.add_experimental_option('detach', True)
         prefs = {'profile.default_content_settings.popups': 0, 'download.default_directory': self.Download_directory}
@@ -45,6 +45,7 @@ class Spider(object):
         self.driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[3]/form/div/div/input[1]'). \
             send_keys(target_url)
         self.driver.find_element_by_xpath('/html/body/div[4]/div[1]/div[3]/form/div/div/input[1]').send_keys(Keys.ENTER)
+
         pass
 
     # Choose the year of 2020
@@ -76,13 +77,12 @@ class Spider(object):
         # Generate the xpath data for target day
         xpath = '/html/body/div[4]/div[4]/div[2]/div[' + str(self.month_calender[month]) + ']/div[2]/div[' + \
                 str(weeks) + ']/div[' + str(self.day_calender[day]) + ']'
-        print(xpath)
         return xpath
         pass
 
     # This function is used for scroll the scroller
     def scroll_the_page(self):
-        new_height = int(self.driver.execute_script("return document.body.scrollHeight")) / 3 * 2
+        new_height = int(self.driver.execute_script("return document.body.scrollHeight")) * 0.32
         js_script = 'window.scrollBy(0,' + str(new_height) + ')'
         self.driver.execute_script(js_script)
         pass
@@ -149,22 +149,28 @@ class Spider(object):
     # Do the open select date time page and download the file, at last, close the browser
     def open_select_date_time_page_and_download(self, target_date):
         year = datetime.strptime(target_date, '%b %d %Y').strftime('%Y')
+        time.sleep(2)
         if year == '2020':
             self.choose_year_2020()
             pass
         elif year == '2021':
             self.choose_year_2020()
             pass
-        self.driver.implicitly_wait(1)
+        time.sleep(2)
         self.scroll_the_page()
+        time.sleep(2)
         self.driver.implicitly_wait(1)
+        self.driver.find_element_by_id('react-wayback-search').click()
+        time.sleep(1)
         self.driver.find_element_by_xpath(self.xpath_for_target_date(target_date, year)).click()
-        self.driver.implicitly_wait(1)
+        time.sleep(2)
         self.xpath_last_time, self.last_time = self.choose_time()
         if self.xpath_last_time is not None:
+            time.sleep(1)
             self.driver.find_element_by_xpath(self.xpath_last_time).click()
             self.driver.implicitly_wait(1)
             try:
+                time.sleep(1)
                 self.click_cookie_button()
                 self.download_file()
                 time.sleep(30)
