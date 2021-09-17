@@ -28,7 +28,7 @@ start_date = 'APR 03 2020'
 final_date = 'SEP 16 2021'
 
 ### Download directory
-Download_directory = r'G:\LiU\732A76_Research_Project\data'
+Download_directory = r'YOUR DIRECTORY THAT PALCE THE DATA'
 
 
 ## License
