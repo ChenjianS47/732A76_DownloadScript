@@ -18,10 +18,8 @@ chrome_driver = r"C:\Program Files (x86)\Google\Chrome\Application\chromedriver.
 Wayback_Machine_URL = 'https://web.archive.org/'
 
 ### Target URL
-Target_URL = ('https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/'
-              'bekraftade-fall-i-sverige',
-              'https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/' \
-             'statistik-och-analyser/bekraftade-fall-i-sverige/')
+Target_URL = ('https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/bekraftade-fall-i-sverige',
+              'https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/statistik-och-analyser/bekraftade-fall-i-sverige/')
 
 ### Define the start date and final date
 start_date = 'APR 03 2020'
