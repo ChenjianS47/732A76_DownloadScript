@@ -30,8 +30,7 @@ Download_directory = r'YOUR DIRECTORY THAT PALCE THE DATA'
 
 
 ## License
--------
 
 pysrcds is distributed under the MIT license. See
-[LICENSE.md](https://github.com/ChenjianS47/ChenjianS47-WayBackMachine_FHM_COVID-19_statistics/blob/5a2344ecf1840d73396514fbf2e7bb89235d3fe7/LICENSE)
+[LICENSE.md](https://github.com/ChenjianS47/WayBackMachine_FHM_COVID-19_statistics/blob/main/LICENSE)
 for more information.
