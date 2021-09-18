@@ -154,7 +154,7 @@ class Spider(object):
             self.choose_year_2020()
             pass
         elif year == '2021':
-            self.choose_year_2020()
+            self.choose_year_2021()
             pass
         time.sleep(2)
         self.scroll_the_page()
