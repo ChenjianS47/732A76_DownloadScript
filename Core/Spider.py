@@ -58,6 +58,11 @@ class Spider(object):
         self.driver.find_element_by_xpath('/html/body/div[4]/div[3]/div/div[2]/span[26]').click()
         pass
 
+    # Choose the year of 2021
+    def choose_year_2022(self):
+        self.driver.find_element_by_xpath('/html/body/div[4]/div[3]/div/div[2]/span[27]').click()
+        pass
+
     # This function is used for generate the xpath date for the target date.
     def xpath_for_target_date(self, target_date, year):
         # Check the month of the target day
@@ -143,7 +148,11 @@ class Spider(object):
 
     # This function is only used for click the accept button of cookies, so that it would not shade the download link
     def click_cookie_button(self):
-        self.driver.find_element_by_id('cookies-button').click()
+        try:
+            self.driver.find_element_by_id('cookies-button').click()
+            pass
+        except:
+            self.driver.find_element_by_class_name('js-cookies-accept-all').click()
         pass
 
     # Do the open select date time page and download the file, at last, close the browser
@@ -155,6 +164,9 @@ class Spider(object):
             pass
         elif year == '2021':
             self.choose_year_2021()
+            pass
+        elif year == '2022':
+            self.choose_year_2022()
             pass
         time.sleep(2)
         self.scroll_the_page()
@@ -169,11 +181,13 @@ class Spider(object):
             time.sleep(1)
             self.driver.find_element_by_xpath(self.xpath_last_time).click()
             self.driver.implicitly_wait(1)
+            time.sleep(1)
+            self.click_cookie_button()
             try:
                 time.sleep(1)
-                self.click_cookie_button()
+
                 self.download_file()
-                time.sleep(30)
+                time.sleep(45)
                 os.rename(self.Download_directory + '\\Folkhalsomyndigheten_Covid19.xlsx',
                           self.Download_directory + '\\Folkhalsomyndigheten_Covid19' + '_' + target_date + '.xlsx')
                 print('{}, Finished downloading of the file in {}'.format(datetime.now().strftime('%b %d %Y - %H:%M:%S')

@@ -12,7 +12,7 @@ Target_URL = ('https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/
 
 # Define the start date and final date
 start_date = 'APR 03 2020'
-final_date = 'SEP 16 2021'
+final_date = 'JAN 05 2022'
 
 # Download directory
 Download_directory = r'G:\LiU\732A76_Research_Project\data'
